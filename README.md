@@ -69,6 +69,7 @@ optional arguments:
 
 * **-name,--name** defines the name of the user problem.
 
+* **-path,--path** defines a custom output path (default='output/').
 ## Examples
 
 ### Generate all reference problems on a 400 zone grid
@@ -81,7 +82,7 @@ optional arguments:
 
 ### Generate a user-defined problem on the domain [0.0,1.0] with a nodal grid of 25 points
 
-```./toro_exact.py -n 25 -d nodal -p user --left "[1.0,0.0,1.0]" --right "[0.125,0.0,0.1]" -b "[0.0,1.0]" -x 0.5 -t 0.2 -name "'custom'"```
+```./toro_exact.py -n 25 -d nodal -p user --left "[1.0,0.0,1.0]" --right "[0.125,0.0,0.1]" -b "[0.0,1.0]" -x 0.5 -t 0.2 -name 'custom'```
 
 ### Solution of the Sod shock tube problem [2]
 <img src="output/Sod_t1.64400e-01_exact.png" alt="Sod_t1.64400e-01_exact.png" width="500"/>
