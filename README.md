@@ -68,7 +68,7 @@ optional arguments:
 
 ## Examples
 
-### Generate all reference problems on a 100 zone grid
+### Generate all reference problems on a 400 zone grid
 
 ```./toro_exact.py -n 100 -d zonal -p all```
 
