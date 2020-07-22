@@ -68,11 +68,11 @@ optional arguments:
 
 ## Examples
 
-### Generate all Toro problems on a 100 zone grid
+### Generate all reference problems on a 100 zone grid
 
 ```./toro_exact.py -n 100 -d zonal -p all```
 
-### Generate solutions to only problems 1 and 7 using default values
+### Generate solutions to only problems Toro-1 and Toro-7 using default values
 
 ```./toro_exact.py -p Toro-1 -p Toro-7```
 
