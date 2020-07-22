@@ -79,6 +79,9 @@ def setupParser():
 		                    help='set user evaluation time')
 	user_group.add_argument('-name','--name',dest='name',
 		                    help='set problem name')
+	user_group.add_argument('-path','--path',dest='path',
+		                    default='output/',
+		                    help='set problem output path (default \'output/\')')
 	return parser
 
 #============================================
@@ -104,6 +107,7 @@ if(__name__ == '__main__'):
 	disc  = args.disc
 	npts  = int(args.npts)
 	xbnds = ast.literal_eval(args.bounds)
+	path = args.path
 
 	# Extract user parameters
 	if('user' in problemList):
@@ -115,7 +119,7 @@ if(__name__ == '__main__'):
 		                 'right':ast.literal_eval(args.stateR),
 		                 'time':ast.literal_eval(args.time),
 		                 'x0':ast.literal_eval(args.x0),
-		                 'name':ast.literal_eval(args.name)}
+		                 'name':args.name}
 
 	# Evaluate all requested problems
 	for icase in problemList:
@@ -163,7 +167,7 @@ if(__name__ == '__main__'):
 		dens, pres, velx, eint, cspd = rp.sample(s)
 
 		# Write to output
-		filename = 'output/{:s}_t{:.5e}_exact.csv'.format(name,t)
+		filename = '{:s}{:s}_t{:.5e}_exact.csv'.format(path,name,t)
 		sys.stdout.write('  Writing to file: {:s}\n'.format(filename))
 		with open(filename,'w+') as file:
 			file.write('# Exact Riemann solution for problem:\t{:s}\n'.format(name))

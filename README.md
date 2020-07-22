@@ -22,6 +22,7 @@ usage: toro_exact.py [-h] -p
                      {Sod,Lax,Toro-1,Toro-2,Toro-3,Toro-4,Toro-5,Toro-6,Toro-7,all,user}
                      [-g GAMMA] [-d {zonal,nodal}] [-n NPTS] [-b BOUNDS]
                      [-l STATEL] [-r STATER] [-x X0] [-t TIME] [-name NAME]
+                     [-path PATH]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -42,7 +43,9 @@ optional arguments:
   -x X0, --x0 X0        set user diapgram location
   -t TIME, --time TIME  set user evaluation time
   -name NAME, --name NAME
-                        problem name
+                        set problem name
+  -path PATH, --path PATH
+                        set problem output path (default 'output/')
 ```
 * **-p,--problem [REQUIRED]** defines which problem(s) to evaluate. Can be used multiple times (e.g. ```-p 1 -p 4 -p user```).
 
