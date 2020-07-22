@@ -21,6 +21,7 @@ for file_name in glob.glob('*.csv'):
 	gs = gridspec.GridSpec(3, 1) #, width_ratios=[1, 1.25]
 
 	name=np.genfromtxt(file_name,delimiter='\t',skip_header=0,max_rows=1,comments=[],dtype="|U")[1]
+	print('Plotting {:s} ...'.format(name))
 	discretization=np.genfromtxt(file_name,delimiter='\t',skip_header=1,max_rows=1,comments=[])[1]
 	
 	x0x1=np.genfromtxt(file_name,delimiter='\t',skip_header=2,max_rows=1,comments=[])[1:]
@@ -77,6 +78,6 @@ for file_name in glob.glob('*.csv'):
 	plt.tight_layout()
 	plt.subplots_adjust(wspace=0.2)
 	plt.savefig('{:s}_t{:.5e}_exact.pdf'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=600,facecolor='w', edgecolor='w')
-	plt.savefig('{:s}_t{:.5e}_exact.png'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=600,facecolor='w', edgecolor='w')
+	plt.savefig('{:s}_t{:.5e}_exact.png'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=75,facecolor='w', edgecolor='w')
 
 
