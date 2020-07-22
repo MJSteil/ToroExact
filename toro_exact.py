@@ -62,7 +62,7 @@ def setupParser():
 		                default='zonal', choices=['zonal','nodal'],
 		                help='set discretization [zonal, nodal]')
 	parser.add_argument('-n','--npts',dest='npts',
-		                default=100,
+		                default=400,
 		                help='set number of evaluation points')
 	parser.add_argument('-b','--bounds',dest='bounds',
 		                default='[0.0,1.0]',

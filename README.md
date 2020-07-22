@@ -80,6 +80,9 @@ optional arguments:
 
 ```./toro_exact.py -n 25 -d nodal -p user --left "[1.0,0.0,1.0]" --right "[0.125,0.0,0.1]" -b "[0.0,1.0]" -x 0.5 -t 0.2 -name "'custom'"```
 
+### Solution of the Sod shock tube problem [2]
+<img src="output/Sod_t1.64400e-01_exact.png" alt="Sod_t1.64400e-01_exact.png" width="500"/>
+
 ## Reference
 
 [1]: E.F. Toro. *Riemann solvers and numerical methods for fluid dynamics: a practical introduction*. Springer, Berlin, New York, 2009.  
