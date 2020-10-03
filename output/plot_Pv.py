@@ -36,7 +36,7 @@ rcParams['mathtext.fontset'] = 'dejavusans'
 
 
 #plt.style.use('classic')
-colors = ['r','g','b']
+colors = ['r','g','b','c','m']
 
 
 if len(sys.argv)>1:
@@ -46,8 +46,8 @@ else:
 
 for file_name in file_names:
 	
-	fig = plt.figure(figsize=(8, 10)) 
-	gs = gridspec.GridSpec(3, 1) #, width_ratios=[1, 1.25]
+	fig = plt.figure(figsize=(8, 16.66)) 
+	gs = gridspec.GridSpec(5, 1) #, width_ratios=[1, 1.25]
 
 	name=np.genfromtxt(file_name,delimiter='\t',skip_header=0,max_rows=1,comments=[],dtype="|U")[1]
 	print('Plotting {:s} ...'.format(name))
@@ -62,6 +62,9 @@ for file_name in file_names:
 	uR=np.genfromtxt(file_name,delimiter='\t',skip_header=6,max_rows=1,comments=[])[1:]
 	t1=np.genfromtxt(file_name,delimiter='\t',skip_header=7,max_rows=1,comments=[])[1]
 	
+	pRef=[uL[2],uL[2],uR[2],uR[2]]
+	vRef=[uL[1],uL[1],uR[1],uR[1]]
+	
 	# Convert inital condition [\rho,v,p] to [\rho,\mu,\epsilon]
 	uL[1]=uL[0]*uL[1]
 	uL[2]=uL[2]/(gamma-1.0)+0.5*uL[1]*uL[1]/uL[0]
@@ -72,6 +75,7 @@ for file_name in file_names:
 	rhoRef=[uL[0],uL[0],uR[0],uR[0]]
 	muRef=[uL[1],uL[1],uR[1],uR[1]]
 	epsilonRef=[uL[2],uL[2],uR[2],uR[2]]
+
 	
 	data = np.genfromtxt(file_name,delimiter='\t',skip_header=9)
 	
@@ -104,9 +108,25 @@ for file_name in file_names:
 	ax2.plot(data[:,0],data[:,3],color=colors[2],linewidth=1.5,linestyle='-')
 	ax2.plot(xRef,epsilonRef,color=colors[2],linewidth=1.5,linestyle='--')
 	
+	ax3 = plt.subplot(gs[3])
+	ax3.margins(0.01,0.05)
+	plt.grid(True)
+	plt.xlabel("$x\,[\mathrm{m}]$")
+	plt.ylabel("$p\,[(\mathrm{kg}\mathrm{m}\mathrm{s}^{-2})/\mathrm{m}^{2}]$")
+	ax3.plot(data[:,0],data[:,4],color=colors[3],linewidth=1.5,linestyle='-')
+	ax3.plot(xRef,pRef,color=colors[3],linewidth=1.5,linestyle='--')
+	
+	ax4 = plt.subplot(gs[4])
+	ax4.margins(0.01,0.05)
+	plt.grid(True)
+	plt.xlabel("$x\,[\mathrm{m}]$")
+	plt.ylabel("$v\,[\mathrm{m}\mathrm{s}^{-1}]$")
+	ax4.plot(data[:,0],data[:,6],color=colors[4],linewidth=1.5,linestyle='-')
+	ax4.plot(xRef,vRef,color=colors[4],linewidth=1.5,linestyle='--')
+	
 	plt.tight_layout()
 	plt.subplots_adjust(wspace=0.2)
-	plt.savefig('{:s}_t{:.5e}_exact.pdf'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=600,facecolor='w', edgecolor='w')
-	plt.savefig('{:s}_t{:.5e}_exact.png'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=75,facecolor='w', edgecolor='w')
+	plt.savefig('{:s}_t{:.5e}_exactPv.pdf'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=600,facecolor='w', edgecolor='w')
+	plt.savefig('{:s}_t{:.5e}_exactPv.png'.format(name,t1), bbox_inches='tight', pad_inches=0.1, dpi=75,facecolor='w', edgecolor='w')
 
 
