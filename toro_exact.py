@@ -94,7 +94,7 @@ if(__name__ == '__main__'):
 	#--------------------------------
 	parser = setupParser()
 	args = parser.parse_args()
-
+	
 	# Extract parameters relevant to all problems
 	problemList = args.problems
 	if('all' in problemList):
@@ -125,7 +125,7 @@ if(__name__ == '__main__'):
 	for icase in problemList:
 		stateL = cases[icase]['left']
 		stateR = cases[icase]['right']
-		t      = cases[icase]['time']
+		t      = ast.literal_eval(args.time) if (args.time != None) else cases[icase]['time']
 		x0     = cases[icase]['x0']
 		name   = cases[icase]['name']
 
